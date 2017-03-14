@@ -1,0 +1,41 @@
+#container{
+  width:900px;
+  height:850px;
+  background-color: grey;
+  margin:10px;
+}
+#header{
+  width:950px;
+  height:100px;
+    padding:10px;
+  //margin:10px;
+  align-items: center;
+}
+#img1{
+  display:inline-block;
+  margin-left: 150px;
+  padding:10px;
+  background-color: white;
+}
+#label1{
+  display:inline-block;
+  padding:10px;
+}
+
+#img2{
+  display:inline-block;
+  padding:10px;
+  background-color: white;
+}
+
+#content{
+  margin-right: 10px;
+  margin-left: 30px;
+  padding:10px;
+}
+#content div{
+  display:inline-block;
+}
+#content img{
+    border:solid black;
+}
