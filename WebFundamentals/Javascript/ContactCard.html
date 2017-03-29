@@ -15,7 +15,7 @@ $(document).ready(function(){
   $('button').click(function(){
     var sel=[];
     var i=0;
-    var appendText="<h4>User Details</h4>";
+    var appendText="<h4>User Details</h4><div id=#userDet"+j+">";
     $('#detCard').append(appendText);
     $('div>.grp').each(function(index){
       sel[i]=$(this).val();
@@ -32,18 +32,20 @@ $(document).ready(function(){
     });
     $('#detCard').append("<hr width='200px' height='2px'>");
     arr[j]=[];
-    arr[j].firstname=sel[0];
-    arr[j].lastname=sel[1];
-    arr[j].des=sel[2];
-    //console.log(arr[j]);
-    j++;
+    var k=0;
+    for(var key in arr)
+    {
+      arr[j][key]=sel[k];
+      k++
+    }
+    j++;//increment array index
   });//button clcik end
 
   /* code for description clcik*/
   $('#detCard').on('click','a',function(){
     //alert("inside on");
     //alert($(this).siblings('.descId').text());
-    $(this).siblings('.descId').show();
+    $(this).prev('.descId').show();
     $(this).hide();
   });
   $('div').on('mouseover', 'a', function(){
