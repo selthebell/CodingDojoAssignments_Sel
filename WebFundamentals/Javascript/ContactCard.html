@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta char='utf-8'><script src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous">
+</script>
+<script>
+
+var arr={
+  firstname:'',lastname:'',des:''};
+var j=0;
+
+$(document).ready(function(){
+  $('button').click(function(){
+    var sel=[];
+    var i=0;
+    var appendText="<h4>User Details</h4>";
+    $('#detCard').append(appendText);
+    $('div>.grp').each(function(index){
+      sel[i]=$(this).val();
+      if(i==2)
+      {
+        $('#detCard').append("<p class='descId' hidden>"+sel[i]+"</p>");
+        $('#detCard').append("<a class=\"desc\">"+"Click for description"+"</an>");
+      }
+      else
+      {
+      $('#detCard').append("<p>"+sel[i]+"</p>");
+      }
+      i++;
+    });
+    $('#detCard').append("<hr width='200px' height='2px'>");
+    arr[j]=[];
+    arr[j].firstname=sel[0];
+    arr[j].lastname=sel[1];
+    arr[j].des=sel[2];
+    //console.log(arr[j]);
+    j++;
+  });//button clcik end
+
+  /* code for description clcik*/
+  $('#detCard').on('click','a',function(){
+    //alert("inside on");
+    //alert($(this).siblings('.descId').text());
+    $(this).siblings('.descId').show();
+    $(this).hide();
+  });
+  $('div').on('mouseover', 'a', function(){
+    $(this).css('color', 'pink');
+   });
+});
+</script>
+</head>
+<body>
+  <h3>Contact Card</h3>
+  <div>
+    <label>First name:</label>
+    <input class="grp" type=text name=fname>
+  </div>
+  <div>
+    <label>Last name:</label>
+    <input class="grp" type=text name=lname>
+  </div>
+  <div>
+    <label>Description:</label>
+    <input class="grp" type=textarea name=desc>
+  </div>
+
+  <button>Add User</button>
+  <hr width="300px" height="20px">
+  <div id="detCard">
+  </div>
+</body>
+</html>
