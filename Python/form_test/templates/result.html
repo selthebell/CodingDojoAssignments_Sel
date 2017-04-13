@@ -1,0 +1,17 @@
+<html>
+    <head>
+       <title>Form Test Index</title>
+    </head>
+    <body>
+      <h3>Submitted info</h3>
+      <hr>
+      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+      <form  action='/goback' method='get'>
+          <p>Name: {{name}}</p>
+          <p>Location: {{location}}</p>
+          <p>Favourite Language: {{lang}}</p>
+          <p>Comments: {{comments}}</p>
+          <button href="/goback">GoBack</button>
+      </form>
+    </body>
+</html>

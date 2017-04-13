@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTTP Request Response</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+      url="https://api.github.com/events"
+      $.get(url, function(res) {
+        console.log(res[0].id);
+      })
+    })
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
