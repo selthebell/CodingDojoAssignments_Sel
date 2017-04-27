@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta char='utf-8'>
+  <title>Friends Info</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for( 'static',filename='css/style.css' ) }}">
+</head>
+<body>
+  <h3>User info - {{all_friends['last_name']}},{{all_friends['first_name']}}</h3>
+  <hr>
+  <table>
+    <thead>
+        <tr>
+          <td>ID</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Occupation</td>
+          <td>email</td>
+          <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{all_friends['id']}}</td>
+        <td>{{all_friends['first_name']}}</td>
+        <td>{{all_friends['last_name']}}</td>
+        <td>{{all_friends['occupation']}}</td>
+        <td>{{all_friends['email']}}</td>
+        <td><a href="/">Index</a>
+    {% if flag=="edit" %}
+        </td>
+        </tbody>
+      </table>
+      <hr>
+          <form action="/friends/update/{{all_friends['id']}}" method="post">
+            First Name:<input type="text" name="first_name" placeholder="firstname" value="{{all_friends['first_name']}}">
+            Last Name:<input type="text" name="last_name" placeholder="lastname" value="{{all_friends['last_name']}}">
+            Occupation:<input type="text" name="occupation" placeholder="occupation" value="{{all_friends['occupation']}}">
+            email:<input type="text" name="email" placeholder="email" value="{{all_friends['email']}}">
+            <button type="submit" value="update">Update</button>
+          </form>
+    {% else %}
+        <a href="/friends/{{all_friends['id']}}/edit">Update</a></td>
+        </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>

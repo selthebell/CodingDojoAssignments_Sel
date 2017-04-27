@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<head>
+  <meta char='utf-8'>
+  <title>Friends</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for( 'static',filename='css/style.css' ) }}">
+</head>
+<body>
+  <h1> Friends </h1>
+  <hr>
+  <form action="/" method="post">
+    <table>
+      <thead>
+          <tr>
+            <td>First Name:</td>
+            <td>Last Name:</td>
+            <td>Occupation:</td>
+            <td>email:</td>
+            <td>Action</td>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="first_name"></td>
+          <td><input type="text" name="last_name"></td>
+          <td><input type="text" name="occupation"></td>
+          <td><input type="text" name="email"></td>
+          <td><button type="submit" value="Add">Add Friends</button></td>
+        </tr>
+      </table>
+    </form>
+    <hr>
+    <h3>Friends list:</h3>
+    <hr>
+    <table class="tborder">
+      <thead>
+          <tr>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Occupation</td>
+            <td>Email</td>
+            <td>Action</td>
+          </tr>
+      </thead>
+      <tbody>
+        {% for friend in all_friends: %}
+        <tr>
+          <td>{{friend['id']}}</td>
+          <td>{{friend['first_name']}}</td>
+          <td>{{friend['last_name']}}</td>
+          <td>{{friend['occupation']}}</td>
+          <td>{{friend['email']}}</td>
+          <td>
+            <a href="/friends/{{friend['id']}}/show">show</a>
+            <a href="/friends/delete/{{friend['id']}}">Delete</a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </body>
+  </html>
