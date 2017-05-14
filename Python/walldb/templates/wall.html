@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta char='utf-8'>
+  <title>Users</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for( 'static',filename='css/style.css' ) }}">
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages%}
+      <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <div id="title">
+    <h2>Coding DojoWall</h2>
+  </div>
+  <div id="title">
+    <h3>Welcome {{session['name']}}</h3>
+    <a id="logout" href='/logout'>Logout</a>
+  </div>
+  <form name="msg" action="/wall" method="post">
+    <input type='hidden' name="id" value="{{session['id']}}">
+    <textarea  name="message" rows="4" cols="50"></textarea>
+    <button type="submit" name="msgSubmit">Post a Message</button>
+  </form>
+
+  <form name="cmt" action="/wall/comment" method="post">
+    {% for message in messages %}
+    <div>
+      <h4>{{message['name']}} - {{message['created_at'].strftime("%d/%m/%y %-I:%M%P")}}</h4>
+      <h4>{{message['message']}}
+      {% if message['users_id'] == session['id'] %}
+      <a  id="delete" href="/delete/{{message['messages_id']}}">Delete Message</a>
+      {% endif %}
+      </h4>
+      <div class="commentsClass">
+      {% for comment in comments %}
+        {% if comment['messages_id'] == message['messages_id']%}
+          <h5>{{comment['name']}} - {{comment['created_at'].strftime("%d/%m/%y %-I:%M%P")}}</h5>
+          <h5>{{comment['comment']}}</h5>
+        {% endif %}
+      {% endfor%}
+      <textarea  name="comments{{message['messages_id']}}" rows="4" cols="50"></textarea>
+      <button  type="submit" name="comment" value="{{message['messages_id']}}">Post a Comment</button>
+      </div>
+    </div>
+    <hr>
+    {% endfor %}
+  </form>
+    <h3><a href="/">back</a></h3>
+</body>
+</html>

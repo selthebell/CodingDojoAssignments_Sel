@@ -1,0 +1,29 @@
+*{
+  margin = 0
+  padding= 0
+}
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+table {
+  border-collapse: collapse;
+}
+.commentsClass{
+  margin-left: 30px;
+  border: black 1px;
+}
+#logout{
+  display: inline-block;
+  margin-left: 400px;
+  style:none;
+}
+#delete{
+  display: inline-block;
+  margin-left: 100px;
+  style:none;
+}
+h3{
+  display: inline-block;
+}
